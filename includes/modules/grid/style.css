@@ -1,0 +1,15 @@
+.main {
+    display: grid;
+    grid-auto-flow: dense;
+}
+
+.main .item {
+
+}
+
+.main .dsp_grid_item {
+    border-right: 1px solid #000;
+    grid-column-start: auto;
+    grid-row-start: auto;
+    height: 100%;
+}
