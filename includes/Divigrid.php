@@ -9,6 +9,20 @@ class DSP_Divigrid extends DiviExtension {
 	 *
 	 * @var string
 	 */
+    protected function _enqueue_debug_bundles() {
+        // Frontend Bundle
+        $site_url       = wp_parse_url( get_site_url() );
+        $hot_bundle_url = "http://localhost:3000/static/js/frontend-bundle.js";
+
+        wp_enqueue_script( "{$this->name}-frontend-bundle", $hot_bundle_url, $this->_bundle_dependencies['frontend'], $this->version, true );
+
+        if ( et_core_is_fb_enabled() ) {
+            // Builder Bundle
+            $hot_bundle_url = "http://localhost:3000/static/js/builder-bundle.js";
+
+            wp_enqueue_script( "{$this->name}-builder-bundle", $hot_bundle_url, $this->_bundle_dependencies['builder'], $this->version, true );
+        }
+    }
 	public $gettext_domain = 'dsp-divigrid';
 
 	/**
